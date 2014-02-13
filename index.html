@@ -1,56 +1,52 @@
 <!doctype html>
 
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
+    <head>
+        <meta charset="utf-8">
+        
+        <title>Zlider | The content slider</title>
+        <meta name="description" content="Zwiper is a first class content slider with 1:1 touch interactions, responsive, and mobile friendly.">
+        <meta name="author" content="Ruud Voost">
+        
+        <!-- Normalize Elements -->
+        <link rel="stylesheet" type="text/css" href="_vendor/normalize-3.0.0.css">
+        
+        <!-- Less Styling -->
+        <link rel="stylesheet" type="text/less" href="_less/styles.less">
+        <!-- Less Compiler for development only -->
+        <script type="text/javascript" src="_vendor/less-1.6.1.min.js"></script>
+    </head>
     
-    <title>Zlider | The content slider</title>
-    <meta name="description" content="Zwiper is a first class content slider with 1:1 touch interactions, responsive, and mobile friendly.">
-    <meta name="author" content="Ruud Voost">
-    
-    <!-- Normalize Elements -->
-    <link rel="stylesheet" type="text/css" href="_vendor/normalize-3.0.0.css">
-    
-    <!-- Less Styling -->
-    <link rel="stylesheet" type="text/less" href="_less/styles.less">
-    <!-- Less Compiler for development only -->
-    <script type="text/javascript" src="_vendor/less-1.6.1.min.js"></script>
-  </head>
-  
-  <body>
-    <div class="container">
-      <header><h1 id="title">This will be replaced</h1></header>
-      
-      <section class="zwiper-container">
-        <figure class="zwiper-slide">
-          <img src="_img/bear.jpg">
-          <figcaption>
-            Would it surprise you to know that an adult bear has almost no predators? Bears are large and can be quite intimidating so they don’t have many enemies. Their biggest enemies are humans and each other.
-          </figcaption>
-        </figure>
-        <figure class="zwiper-slide">
-          <p>Second slide with minimal content.</p>
-        </figure>
-        <div class="zwiper-slide">
-          <form>
-            <input type="text" placeholder="Testing some minimal form witht his input field!">
-            <button>This will send the form</button>
-          </form>
+    <body>
+        <div class="container">
+            <header><h1 id="title">This will be replaced</h1></header>
+            
+            <section class="zwiper-container">
+                <figure class="zwiper-slide">
+                    <img src="_img/bear.jpg">
+                    <figcaption>
+                        Would it surprise you to know that an adult bear has almost no predators? Bears are large and can be quite intimidating so they don’t have many enemies. Their biggest enemies are humans and each other.
+                    </figcaption>
+                </figure>
+                <figure class="zwiper-slide">
+                    <p>Second slide with minimal content.</p>
+                </figure>
+                <div class="zwiper-slide">
+                    <form>
+                        <input type="text" placeholder="Testing some minimal form witht his input field!">
+                        <button>This will send the form</button>
+                    </form>
+                </div>
+            </section>
         </div>
-      </section>
-    </div>
-    
-    <!-- Load Scripts -->
-    <script src="_js/zwiper.js"></script>
-    <script type="text/javascript">
-      // self executing function calling zwiper()
-      (function() {
-        zwiper();
         
-        // This will be the way we would like to invoke the zwiper
-        // document.getElementById('zwiper-container').zwiper({ 'someOption' : 'someValue', 'etc' : 'etc' });
-        
-      })();
-    </script>
-  </body>
+        <!-- Load Scripts -->
+        <script src="_js/zwiper.js"></script>
+        <script type="text/javascript">
+            // equal to $('document').ready(function(){ zwiper(); });
+            document.addEventListener('DOMContentLoaded', function(){
+                zwiper();
+            });
+        </script>
+    </body>
 </html>

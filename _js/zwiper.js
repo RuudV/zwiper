@@ -12,7 +12,32 @@
 function zwiper() {
     // use strict js to make sure all errors are catched.
     "use strict";
-    var ready = 'Ready for lift off!';
-    console.log(ready);
-    document.getElementById('title').textContent = ready;
+    // declare used vars
+    var zwiperContainer, zwiperContainerHtml, zwiperWrapper, zwiperContainerWidth, zwiperSlides, i;
+    
+    console.log('ready to rumble!');
+    
+    zwiperContainer = document.getElementsByClassName('zwiper-container');
+    zwiperContainer = zwiperContainer[0];
+    console.log(zwiperContainer);
+    
+    zwiperContainerHtml = zwiperContainer.innerHTML;
+    zwiperContainer.innerHTML = '<div class="zwiper-wrapper">' + zwiperContainerHtml + '</div>';
+    
+    zwiperWrapper = document.getElementsByClassName('zwiper-wrapper');
+    zwiperWrapper = zwiperWrapper[0];
+    
+    console.log(zwiperContainer);
+    
+    zwiperContainerWidth = parseInt(window.getComputedStyle(zwiperContainer, null).getPropertyValue('width'), 10);
+    console.log('zwiperContainerWidth: ');
+    console.log(zwiperContainerWidth);
+    
+    zwiperSlides = document.getElementsByClassName('zwiper-slide');
+    
+    for (i = 0; i < zwiperSlides.length; i += 1) {
+        zwiperSlides[i].setAttribute('style', 'width: ' + zwiperContainerWidth + 'px;');
+    }
+    
+    zwiperWrapper.setAttribute('style', 'width: ' + (zwiperContainerWidth * 3) + 'px;');
 }

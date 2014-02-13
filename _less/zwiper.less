@@ -5,13 +5,19 @@
 
 // Mandatory styling for Zwiper to work
 .zwiper-container {
-  height: 300px; // mandatory
-  width: 50%; // mandatory
-  overflow: hidden;
+    height: 300px; // mandatory
+    width: 600px; // mandatory
+    overflow: hidden;
+}
+
+.zwiper-wrapper {
+    // set height to 100% of .zwiper-container
+    height: 100%;
 }
 
 .zwiper-slide {
-    width: 100%;
+    // set .zwiper-slide to 100% .zwiper-container
     height: 100%;
+    margin: 0;
     float: left;
 }
