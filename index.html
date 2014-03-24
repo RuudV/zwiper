@@ -35,15 +35,58 @@
                         <button>This will send the form</button>
                     </form>
                 </div>
+                <figure class="zwiper-slide">
+                    <h1>WHAAAA!</h1>
+                </figure>
+                <figure class="zwiper-slide">
+                    <h2>WHEEEEEEE</h2>
+                </figure>
+                <figure class="zwiper-slide">
+                    bladiebla
+                </figure>
+                <figure class="zwiper-slide">
+                    <p>final! slide with minimal content.</p>
+                </figure>
+            </section>
+            
+            <section id="beasts" class="rayman">
+                <figure class="zwiper-slide">
+                    <img src="_img/bear.jpg">
+                    <figcaption>
+                        Would it surprise you to know that an adult bear has almost no predators? Bears are large and can be quite intimidating so they don’t have many enemies. Their biggest enemies are humans and each other.
+                    </figcaption>
+                </figure>
+                <figure class="zwiper-slide">
+                    <p>Second slide with minimal content.</p>
+                </figure>
+                <div class="zwiper-slide">
+                    <form>
+                        <input type="text" placeholder="Testing some minimal form witht his input field!">
+                        <button>This will send the form</button>
+                    </form>
+                </div>
+                <figure class="zwiper-slide">
+                    <h1>WHAAAA!</h1>
+                </figure>
+                <figure class="zwiper-slide">
+                    <h2>WHEEEEEEE</h2>
+                </figure>
+                <figure class="zwiper-slide">
+                    bladiebla
+                </figure>
+                <figure class="zwiper-slide">
+                    <p>final! slide with minimal content.</p>
+                </figure>
             </section>
         </div>
         
         <!-- Load Scripts -->
-        <script src="_js/zwiper.core.js"></script>
+        <script src="_js/zwiper.js"></script>
         <script type="text/javascript">
             // equal to $('document').ready(function(){ zwiper(); });
             document.addEventListener('DOMContentLoaded', function(){
-                ZWIPER.core().zwiper('beasts');
+                var beasts = new zwiper('beasts');
+                var rayman = new zwiper('rayman');
             });
         </script>
     </body>
