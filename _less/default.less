@@ -13,3 +13,21 @@ body {
 img {
     max-width: 100%;
 }
+
+#beasts {
+    background: red;
+    height: 300px;
+    width: 600px;
+    margin: 10% auto;
+    .zwiper-slide {
+        &:nth-child(1) {
+            background: magenta;
+        }
+        &:nth-child(2) {
+            background: green;
+        }
+        &:nth-child(3) {
+            background: pink;
+        }
+    }
+}

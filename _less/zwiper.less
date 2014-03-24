@@ -4,15 +4,11 @@
 */
 
 // Mandatory styling for Zwiper to work
-.zwiper-container {
-    height: 300px; // mandatory
-    width: 600px; // mandatory
-    overflow: hidden;
-}
-
 .zwiper-wrapper {
     // set height to 100% of .zwiper-container
     height: 100%;
+    -webkit-transform: translate3d(0,0,0);
+    -webkit-transition: all .6s cubic-bezier(.42,0,.58,1);
 }
 
 .zwiper-slide {

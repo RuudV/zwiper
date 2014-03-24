@@ -19,9 +19,7 @@
     
     <body>
         <div class="container">
-            <header><h1 id="title">This will be replaced</h1></header>
-            
-            <section class="zwiper-container">
+            <section id="beasts" class="beasts">
                 <figure class="zwiper-slide">
                     <img src="_img/bear.jpg">
                     <figcaption>
@@ -41,11 +39,11 @@
         </div>
         
         <!-- Load Scripts -->
-        <script src="_js/zwiper.js"></script>
+        <script src="_js/zwiper.core.js"></script>
         <script type="text/javascript">
             // equal to $('document').ready(function(){ zwiper(); });
             document.addEventListener('DOMContentLoaded', function(){
-                zwiper();
+                ZWIPER.core().zwiper('beasts');
             });
         </script>
     </body>
