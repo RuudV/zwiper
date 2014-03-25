@@ -10,26 +10,26 @@ var zwiper = this.Object || {};
 zwiper = function (userSettings) {
     "use strict";
     
-    console.log('arg', userSettings);
     // vars!
-    var zwiperDefaults, zwiperObj, zwiperContainer, zwiperContainerHtml, zwiperWrapper, zwiperContainerWidth, zwiperSlides, i, clicks, zwiperSettings;
+    var zwiperDefaults, zwiperObj, zwiperContainer, zwiperContainerHtml, zwiperWrapper, zwiperContainerWidth, zwiperSlides, i, clicks, zwiperSettings = {};
     
     // Default zwiper settings. Can be overwritten
     zwiperDefaults = {
         container: 'zwiper-container',
-        slide: 'zwiper-slide',
-        nextBtn: 'zwiper-next',
-        prevBtn: 'zwiper-prev'
+        slide: 'zwiper-slide'
     };
     
     // check user set settings, overwrite defaults if necessary
-    function checkUserSettings(userSettings) {
-        var zwiperSettings;
+    function setSettings(userSettings) {
+        var zwiperSettings, objProp;
         // If type is string, it must be the container class/id
         if (typeof userSettings === 'string') {
             // Overwrite zwiperSettings default container with user set container
             zwiperSettings = zwiperDefaults;
             zwiperSettings.container = userSettings;
+        } else if (typeof userSettings === 'object') {
+            console.log('userSettings object', userSettings);
+            for (var objeProp in userSettings) { zwiperSettings[attrProp] = userSettings[objProp]; }
         } else {
             // Keep defaults
             zwiperSettings = zwiperDefaults;
@@ -38,7 +38,8 @@ zwiper = function (userSettings) {
     }
     
     // check userSettings
-    zwiperSettings = checkUserSettings(userSettings);
+    zwiperSettings = setSettings(userSettings);
+    console.log('zwiperSettings', zwiperSettings);
     
     // retrieve container and store in zwiperContainer var
     zwiperContainer = document.getElementsByClassName(zwiperSettings.container)[0];
