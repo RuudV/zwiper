@@ -18,14 +18,17 @@ img {
 #animals {
     height: 300px;
     width: 600px;
-    border-radius: 10px;
-    overflow: hidden;
+    margin: 0 auto;
 }
 
 .section {
-    margin: 5% auto 0 auto;
-    width: 600px;
-    height: 300px;
+    margin: 5% auto 5% auto;
+    &:first-child {
+        margin-top: 10%;
+    }
+    &:last-child {
+        margin-bottom: 10%;
+    }
 }
 
 #beasts_nav {
