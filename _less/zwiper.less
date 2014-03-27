@@ -1,0 +1,24 @@
+/*
+* zwiper.less
+* Created by: Ruud Voost
+*/
+
+// Mandatory styling for Zwiper to work
+.zwiper-wrapper {
+    // set height to 100% of .zwiper-container
+    height: 100%;;
+    
+    -webkit-transition: -webkit-transform .9s cubic-bezier(.42,0,.58,1);
+    
+    -webkit-backface-visibility: hidden;
+    -webkit-perspective: 1000;
+    -webkit-transform: translateZ(0);
+}
+
+.zwiper-slide,
+.aSlide {
+    // set .zwiper-slide to 100% .zwiper-container
+    height: 100%;
+    margin: 0;
+    float: left;
+}
