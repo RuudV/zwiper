@@ -11,7 +11,7 @@ zwiper = function (userSettings) {
     "use strict";
     
     // vars!
-    var zwiperDefaults, zwiperObj, zwiperContainer, zwiperContainerHtml, zwiperWrapper, zwiperContainerWidth, zwiperSlides, i, clicks, zwiperSettings = {}, objProp, transformWithPref, transform;
+    var zwiperDefaults, zwiperObj, zwiperContainer, zwiperContainerHtml, zwiperWrapper, zwiperContainerWidth, zwiperSlides, i, clicks, zwiperSettings = {}, objProp, transformWithPref, prefixProp = {};
     
     // Default zwiper settings. Can be overwritten
     zwiperDefaults = {
@@ -59,8 +59,8 @@ zwiper = function (userSettings) {
         return null;
     }
     transformWithPref = ['transform', 'msTransform', 'webkitTransform', 'mozTransform', 'oTransform'];
-    transform = getSupportedPropertyName(transformWithPref);
-    console.log(transform);
+    prefixProp.transform = getSupportedPropertyName(transformWithPref);
+    console.log(prefixProp.transform);
     
     // ****
     // Transform a translate3D string to an object x:pos, y:pos, z:pos;
@@ -101,7 +101,7 @@ zwiper = function (userSettings) {
     
     // wrapper is container width * nr of slides
     zwiperWrapper.setAttribute('style', 'width: ' + (zwiperContainerWidth * zwiperSlides.length) + 'px;');
-    zwiperWrapper.style[transform] = 'translate3D(0,0,0)';
+    zwiperWrapper.style[prefixProp.transform] = 'translate3D(0,0,0)';
     
     
     
@@ -110,7 +110,7 @@ zwiper = function (userSettings) {
     // ****
     this.nextSlide = function () {
         var distanceLeft, activeSlide, newDistance;
-        distanceLeft = translate3DToObject(zwiperWrapper.style[transform]).x * -1;
+        distanceLeft = translate3DToObject(zwiperWrapper.style[prefixProp.transform]).x * -1;
         console.log('offset!', distanceLeft);
         activeSlide = (distanceLeft / zwiperContainerWidth) + 1;
         console.log('distance left', distanceLeft, 'active slide', activeSlide);
@@ -122,7 +122,7 @@ zwiper = function (userSettings) {
             newDistance = distanceLeft + zwiperContainerWidth;
         }
         
-        zwiperWrapper.style[transform] = 'translate3D(' + newDistance * -1 + 'px, 0, 0)';
+        zwiperWrapper.style[prefixProp.transform] = 'translate3D(' + newDistance * -1 + 'px, 0, 0)';
     };
     
     // ****
@@ -130,7 +130,7 @@ zwiper = function (userSettings) {
     // ****
     this.prevSlide = function () {
         var distanceLeft, activeSlide, newDistance;
-        distanceLeft = translate3DToObject(zwiperWrapper.style[transform]).x * -1;
+        distanceLeft = translate3DToObject(zwiperWrapper.style[prefixProp.transform]).x * -1;
         console.log('offset!', distanceLeft);
         activeSlide = (distanceLeft / zwiperContainerWidth) + 1;
         console.log('distance left', distanceLeft, 'active slide', activeSlide);
@@ -142,7 +142,7 @@ zwiper = function (userSettings) {
             newDistance = distanceLeft - zwiperContainerWidth;
         }
         
-        zwiperWrapper.style[transform] = 'translate3D(' + newDistance * -1 + 'px, 0, 0)';
+        zwiperWrapper.style[prefixProp.transform] = 'translate3D(' + newDistance * -1 + 'px, 0, 0)';
     };
     
 }; // end zwiper
