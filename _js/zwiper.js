@@ -11,7 +11,7 @@ zwiper = function (userSettings) {
     "use strict";
     
     // vars!
-    var zwiperDefaults, zwiperObj, zwiperContainer, zwiperContainerHtml, zwiperWrapper, zwiperContainerWidth, zwiperSlides, i, clicks, zwiperSettings = {};
+    var zwiperDefaults, zwiperObj, zwiperContainer, zwiperContainerHtml, zwiperWrapper, zwiperContainerWidth, zwiperSlides, i, clicks, zwiperSettings = {}, objProp, transformWithPref, transform;
     
     // Default zwiper settings. Can be overwritten
     zwiperDefaults = {
@@ -19,7 +19,9 @@ zwiper = function (userSettings) {
         slide: 'zwiper-slide'
     };
     
-    // check user set settings, overwrite defaults if necessary
+    // ****
+    // Check user set settings, overwrite defaults if necessary
+    // ****
     function setSettings(userSettings) {
         var zwiperSettings, objProp;
         // If type is string, it must be the container class/id
@@ -28,29 +30,62 @@ zwiper = function (userSettings) {
             zwiperSettings = zwiperDefaults;
             zwiperSettings.container = userSettings;
         } else if (typeof userSettings === 'object') {
-            console.log('userSettings object', userSettings);
-            for (var objeProp in userSettings) { zwiperSettings[attrProp] = userSettings[objProp]; }
+            zwiperSettings = zwiperDefaults;
+            for (objProp in userSettings) {
+                if (userSettings.hasOwnProperty(objProp)) {
+                    zwiperSettings[objProp] = userSettings[objProp];
+                }
+            }
         } else {
             // Keep defaults
             zwiperSettings = zwiperDefaults;
         }
         return zwiperSettings;
     }
-    
     // check userSettings
     zwiperSettings = setSettings(userSettings);
     console.log('zwiperSettings', zwiperSettings);
     
+    // ****
+    // Detect which prefix to use
+    // ****
+    function getSupportedPropertyName(properties) {
+        var i;
+        for (i = 0; i < properties.length; i += 1) {
+            if (typeof document.body.style[properties[i]] !== 'undefined') {
+                return properties[i];
+            }
+        }
+        return null;
+    }
+    transformWithPref = ['transform', 'msTransform', 'webkitTransform', 'mozTransform', 'oTransform'];
+    transform = getSupportedPropertyName(transformWithPref);
+    console.log(transform);
+    
+    // ****
+    // Transform a translate3D string to an object x:pos, y:pos, z:pos;
+    // ****
+    function translate3DToObject(value) {
+        value = value.toString();
+        var pattern = /([0-9\-]+)+(?![3d]\()/gi,
+            positionMatched = value.match(pattern);
+        
+        return {
+            x: parseFloat(positionMatched[0]),
+            y: parseFloat(positionMatched[1]),
+            z: parseFloat(positionMatched[2])
+        };
+    }
+    
     // retrieve container and store in zwiperContainer var
     zwiperContainer = document.getElementsByClassName(zwiperSettings.container)[0];
-    zwiperContainer.setAttribute('style', 'overflow: hidden; position: relative;');
+    zwiperContainer.setAttribute('style', 'overflow: hidden;');
     
     // create wrapper that serves as the sliding element
     zwiperContainerHtml = zwiperContainer.innerHTML;
     zwiperContainer.innerHTML = '<div class="zwiper-wrapper">' + zwiperContainerHtml + '</div>';
     // retrieve newly created wrapper and store in zwiperWrapper var
-    zwiperWrapper = zwiperContainer.getElementsByClassName('zwiper-wrapper');
-    zwiperWrapper = zwiperWrapper[0];
+    zwiperWrapper = zwiperContainer.getElementsByClassName('zwiper-wrapper')[0];
     
     // get width and store in zwiperContainerWidth var
     zwiperContainerWidth = parseInt(window.getComputedStyle(zwiperContainer, null).getPropertyValue('width'), 10);
@@ -66,27 +101,48 @@ zwiper = function (userSettings) {
     
     // wrapper is container width * nr of slides
     zwiperWrapper.setAttribute('style', 'width: ' + (zwiperContainerWidth * zwiperSlides.length) + 'px;');
+    zwiperWrapper.style[transform] = 'translate3D(0,0,0)';
     
-    // on click move the wrapper
-    clicks = 0;
-    zwiperWrapper.addEventListener('click', function (e) {
-        clicks += 1;
-        console.log('clicks', clicks);
-        if (clicks < zwiperSlides.length) {
-            this.style.WebkitTransform = 'translate3D(-' + (zwiperContainerWidth * clicks) + 'px, 0, 0)';
-            this.style.MozTransform = 'translate3D(-' + (zwiperContainerWidth * clicks) + 'px, 0, 0)';
-            console.log('Nr of swipes', clicks);
+    
+    
+    // ****
+    // Add method nextSlide() to transition to next slide
+    // ****
+    this.nextSlide = function () {
+        var distanceLeft, activeSlide, newDistance;
+        distanceLeft = translate3DToObject(zwiperWrapper.style[transform]).x * -1;
+        console.log('offset!', distanceLeft);
+        activeSlide = (distanceLeft / zwiperContainerWidth) + 1;
+        console.log('distance left', distanceLeft, 'active slide', activeSlide);
+        
+        if (distanceLeft === parseInt(window.getComputedStyle(zwiperWrapper, null).getPropertyValue('width'), 10) - zwiperContainerWidth) {
+            newDistance = 0;
+            return newDistance;
         } else {
-            console.log('no more slides to show!');
+            newDistance = distanceLeft + zwiperContainerWidth;
         }
-    });
-    
-    this.next = function () {
-        console.log('zwiperWrapper position from left', zwiperWrapper.offsetLeft);
+        
+        zwiperWrapper.style[transform] = 'translate3D(' + newDistance * -1 + 'px, 0, 0)';
     };
     
-    this.previous = function () {
+    // ****
+    // Add method prevSlide() to transition to previous slide
+    // ****
+    this.prevSlide = function () {
+        var distanceLeft, activeSlide, newDistance;
+        distanceLeft = translate3DToObject(zwiperWrapper.style[transform]).x * -1;
+        console.log('offset!', distanceLeft);
+        activeSlide = (distanceLeft / zwiperContainerWidth) + 1;
+        console.log('distance left', distanceLeft, 'active slide', activeSlide);
         
+        if (distanceLeft === 0) {
+            newDistance = 0;
+            return newDistance;
+        } else {
+            newDistance = distanceLeft - zwiperContainerWidth;
+        }
+        
+        zwiperWrapper.style[transform] = 'translate3D(' + newDistance * -1 + 'px, 0, 0)';
     };
     
 }; // end zwiper

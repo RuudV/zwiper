@@ -18,25 +18,27 @@
     </head>
     
     <body>
-        <div class="container">
-            <section id="beasts" class="beasts">
+        <div class="section">
+            <section id="animals" class="animals">
                 <figure class="zwiper-slide">
-                    <img src="_img/bear.jpg">
-                    <figcaption>
-                        Would it surprise you to know that an adult bear has almost no predators? Bears are large and can be quite intimidating so they don’t have many enemies. Their biggest enemies are humans and each other.
-                    </figcaption>
-                </figure>
-                
-                <figure class="zwiper-slide">
-                    <p>Second slide with minimal content.</p>
+                    <img src="_img/cropped/bear.jpg">
                 </figure>
                 
                 <div class="zwiper-slide">
-                    <form>
-                        <input type="text" placeholder="Testing some minimal form witht his input field!">
-                        <button>This will send the form</button>
-                    </form>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
                 </div>
+                
+                <figure class="zwiper-slide">
+                   <img src="_img/cropped/killerwhale.jpg">
+                </figure>
+                
+                <figure class="zwiper-slide">
+                   <img src="_img/cropped/puma.jpg">
+                </figure>
+                
+                <figure class="zwiper-slide">
+                   <img src="_img/cropped/wolf.jpg">
+                </figure>
             </section>
             
             <div id="beasts_nav">
@@ -50,9 +52,21 @@
         <script type="text/javascript">
             // equal to $('document').ready(function(){ zwiper(); });
             document.addEventListener('DOMContentLoaded', function(){
-                var beasts = new zwiper({
-                    container: 'beasts'
+                var _beastsOptions = { container: 'animals' }
+                var beasts = new zwiper(_beastsOptions);
+                
+                var next = document.getElementsByClassName('next-btn')[0];
+                next.addEventListener('click', function (e){
+                    e.preventDefault();
+                    beasts.nextSlide();
                 });
+                
+                var previous = document.getElementsByClassName('prev-btn')[0];
+                previous.addEventListener('click', function (e){
+                    e.preventDefault();
+                    beasts.prevSlide();
+                });
+                
             });
         </script>
     </body>
