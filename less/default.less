@@ -3,43 +3,54 @@
 * Created by: Ruud Voost
 */
 
-html, 
+html,
 body {
     height: 100%;
     width: 100%;
     background: #efefef;
     color: #666;
 }
-
 img {
     max-width: 100%;
 }
-
 #animals {
-    height: 300px;
-    width: 600px;
     margin: 0 auto;
+    height: 300px;
 }
-
 .section {
-    margin: 5% auto 5% auto;
+    margin: 2.5% auto 2.5% auto;
     &:first-child {
-        margin-top: 10%;
+        margin-top: 5%;
     }
     &:last-child {
-        margin-bottom: 10%;
+        margin-bottom: 5%;
     }
 }
-
-#beasts_nav {
-    margin: 0 auto;
-    max-width: 600px;
+.zwiper-nav-container {
+    position: absolute;
+    top: 50%;
+    z-index: 10;
+    width: 100%;
 }
-
-.pull-left {
+.zwiper-prev-slide {
     float: left;
+    margin: -5px 0 0 10px;
+    border-top: 10px solid transparent;
+	border-bottom: 10px solid transparent;
+	
+	border-right: 10px solid #333;
 }
-
-.pull-right {
+.zwiper-next-slide {
     float: right;
+    margin: -5px 10px 0 0;
+    border-top: 10px solid transparent;
+	border-bottom: 10px solid transparent;
+	
+	border-left: 10px solid #333;
+}
+.zwiper-prev-slide, .zwiper-next-slide {
+    height: 0;
+    width: 0;
+    cursor: pointer;
+    overflow: hidden;
 }

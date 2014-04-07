@@ -1,68 +1,67 @@
 <!doctype html>
-
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        
-        <title>Zlider | The content slider</title>
-        <meta name="description" content="Zwiper is a first class content slider with 1:1 touch interactions, responsive, and mobile friendly.">
-        <meta name="author" content="Ruud Voost">
-        
-        <!-- Normalize Elements -->
-        <link rel="stylesheet" type="text/css" href="vendor/normalize-3.0.0.css">
-        
-        <!-- Less Styling -->
-        <link rel="stylesheet" type="text/less" href="less/styles.less">
-        <!-- Less Compiler for development only -->
-        <script type="text/javascript" src="vendor/less-1.6.1.min.js"></script>
-    </head>
-    
-    <body>
-        <div class="section">
-            <section id="animals" class="animals">
-                <figure class="zwiper-slide">
-                    <img src="img/cropped/bear.jpg">
-                </figure>
-                
-                <figure class="zwiper-slide">
-                   <img src="img/cropped/killerwhale.jpg">
-                </figure>
-                
-                <figure class="zwiper-slide">
-                   <img src="img/cropped/puma.jpg">
-                </figure>
-                
-                <figure class="zwiper-slide">
-                   <img src="img/cropped/wolf.jpg">
-                </figure>
-            </section>
-            
-            <div id="beasts_nav">
-                <a class="pull-left prev-btn" href="#previousSlide">Previous Slide please!</a>
-                <a class="pull-right next-btn" href="#nextSlide">Next Slide please!</a>
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Zlider | The content slider</title>
+    <meta name="description" content="Zwiper is a first class content slider with 1:1 touch interactions, responsive, and mobile friendly.">
+    <meta name="author" content="Ruud Voost">
+
+    <!-- Normalize Elements -->
+    <link rel="stylesheet" type="text/css" href="vendor/normalize-3.0.0.css">
+
+    <!-- Less Styling -->
+    <link rel="stylesheet" type="text/less" href="less/styles.less">
+    <!-- Less Compiler for development only -->
+    <script type="text/javascript" src="vendor/less-1.6.1.min.js"></script>
+</head>
+
+<body>
+    <div class="section">
+        <section id="animals" class="animals">
+            <div class="slide">
+                <h3>Title</h3>
+                <p>Some paragraph about the contents of this very handy and skillfully crafted slider. This slider is about animals. Done, I told you about the contents! Great, let's get productive again,...</p>
             </div>
-        </div>
-        
-        <!-- Load Scripts -->
-        <script src="js/zwiper.js"></script>
-        <script type="text/javascript">
-            // equal to $('document').ready(function(){ zwiper(); });
-            document.addEventListener('DOMContentLoaded', function(){
-                var _beastsOptions = { container: 'animals' }
-                var beasts = new zwiper(_beastsOptions);
-                
-                var next = document.getElementsByClassName('next-btn')[0];
-                next.addEventListener('click', function (e){
-                    e.preventDefault();
-                    beasts.nextSlide();
-                });
-                
-                var previous = document.getElementsByClassName('prev-btn')[0];
-                previous.addEventListener('click', function (e){
-                    e.preventDefault();
-                    beasts.prevSlide();
-                });
-            });
-        </script>
-    </body>
+
+            <figure class="slide">
+                <img src="img/full_size/bear.jpg">
+            </figure>
+
+            <figure class="slide">
+                <img src="img/full_size/killerwhale.jpg">
+            </figure>
+
+            <figure class="slide">
+                <img src="img/full_size/puma.jpg">
+            </figure>
+
+            <figure class="slide">
+                <img src="img/full_size/wolf.jpg">
+            </figure>
+        </section>
+
+
+    </div>
+
+    <!-- Load Scripts -->
+    <script src="js/zwiper.js"></script>
+    <script>
+        // equal to $('document').ready(function(){ zwiper(); });
+        document.addEventListener('DOMContentLoaded', function() {
+            var _beastsOptions = {
+                container: 'animals',
+                slide: 'slide',
+                width: '600px',
+                height: '300px',
+                transitionDuration: '.7s',
+                transitionTiming: 'zwiper-ease-out'
+            }
+
+            var beasts = new zwiper(_beastsOptions);
+        });
+    </script>
+</body>
+
 </html>
