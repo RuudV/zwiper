@@ -21,10 +21,9 @@
     <div class="section">
         <section id="animals" class="animals">
             <div class="slide">
-                <h3>Title</h3>
-                <p>Some paragraph about the contents of this very handy and skillfully crafted slider. This slider is about animals. Done, I told you about the contents! Great, let's get productive again,...</p>
+                <h4>Ola, this is a slide!</h4>
+                <p>Without much height so I can test the autoheight calculator :D</p>
             </div>
-
             <figure class="slide">
                 <img src="img/full_size/bear.jpg">
             </figure>
@@ -34,14 +33,13 @@
             </figure>
 
             <figure class="slide">
-                <img src="img/full_size/puma.jpg">
+                <img src="img/cropped/puma.jpg">
             </figure>
 
             <figure class="slide">
                 <img src="img/full_size/wolf.jpg">
             </figure>
         </section>
-
 
     </div>
 
@@ -56,7 +54,8 @@
                 width: '600px',
                 height: '300px',
                 transitionDuration: '.7s',
-                transitionTiming: 'zwiper-ease-out'
+                transitionTiming: 'zwiper-ease-out',
+                autoHeight: true
             }
 
             var beasts = new zwiper(_beastsOptions);

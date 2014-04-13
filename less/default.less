@@ -1,6 +1,6 @@
 /*
 * default.less
-* Created by: Ruud Voost
+* Crafted by: Ruud Voost
 */
 
 html,
@@ -12,11 +12,13 @@ body {
 }
 img {
     max-width: 100%;
+    display: block;
 }
 #animals {
     margin: 0 auto;
-    height: 300px;
+    -webkit-transition: height .6s ease-in-out;
 }
+
 .section {
     margin: 2.5% auto 2.5% auto;
     &:first-child {
@@ -26,31 +28,43 @@ img {
         margin-bottom: 5%;
     }
 }
-.zwiper-nav-container {
+
+.zwiper-prev-slide,
+.zwiper-next-slide {
+    display: block;
+    
+    padding-left: 30px;
+    width: 0;
+    overflow: hidden;
+    
     position: absolute;
-    top: 50%;
-    z-index: 10;
-    width: 100%;
+    top: 0;
+    bottom: 0;
+    
+    background: rgba(255,255,255,.6);
+    cursor: pointer;
+    
+    &::after {
+        content: ' ';
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        margin-top: -10px;
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+    }
 }
 .zwiper-prev-slide {
-    float: left;
-    margin: -5px 0 0 10px;
-    border-top: 10px solid transparent;
-	border-bottom: 10px solid transparent;
-	
-	border-right: 10px solid #333;
+    left: 0;
+    
+    &::after {
+        border-right: 10px solid rgba(0,0,0,.3);
+    }
 }
 .zwiper-next-slide {
-    float: right;
-    margin: -5px 10px 0 0;
-    border-top: 10px solid transparent;
-	border-bottom: 10px solid transparent;
-	
-	border-left: 10px solid #333;
-}
-.zwiper-prev-slide, .zwiper-next-slide {
-    height: 0;
-    width: 0;
-    cursor: pointer;
-    overflow: hidden;
+    right: 0;
+    
+    &::after {
+        border-left: 10px solid rgba(0,0,0,.3);
+    }
 }
