@@ -51,7 +51,7 @@ zwiper = function (userSettings) {
     // *********************************************************************************
 
     // vars!
-    var zwiperObj, zwiperContainer, zwiperWrapper, zwiperContainerWidth, zwiperContainerHeight, zwiperSlides, clicks, zwiperSettings = {}, objProp, prefixProp = {}, transitionend, prefixEvent = {}, JSLintShutUp;
+    var zwiperContainer, zwiperWrapper, zwiperContainerWidth, zwiperContainerHeight, zwiperSlides, zwiperSettings = {}, prefixProp = {}, prefixEvent = {}, JSLintShutUp;
 
 
     // ****
@@ -394,10 +394,6 @@ zwiper = function (userSettings) {
             // initiate the set active slide function on transition end with a helper function to listen to multiple events
             addEventListeners(zwiperWrapper, prefixEvent.transitionend, setActiveSlide);
         }
-
-
-
-
 
         // set transition duration
         setTransitionDuration();
