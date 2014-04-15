@@ -1,6 +1,9 @@
 zwiper
 ======
 
+## Demo
+http://ruudv.github.io/zwiper/
+
 ## Goals
 ### 1.0 Release
 Default enabled:
