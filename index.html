@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 
-<head>
+  <head>
     <meta charset="utf-8">
 
     <title>Zlider | The content slider</title>
@@ -15,52 +15,53 @@
     <link rel="stylesheet" type="text/less" href="less/styles.less">
     <!-- Less Compiler for development only -->
     <script type="text/javascript" src="vendor/less-1.6.1.min.js"></script>
-</head>
+  </head>
 
-<body>
-    <div class="section">
-        <section id="animals" class="animals">
-            <div class="slide">
-                <h4>Ola, this is a slide!</h4>
-                <p>Without much height so I can test the autoheight calculator :D</p>
-            </div>
-            <figure class="slide">
-                <img src="img/full_size/bear.jpg">
-            </figure>
+  <body>
+    <section class="section">
+      <div id="animals" class="animals">
+        <div class="slide">
+          <h4>Ola, this is a slide!</h4>
 
-            <figure class="slide">
-                <img src="img/full_size/killerwhale.jpg">
-            </figure>
+          <p>Without much height so I can test the autoheight calculator :D</p>
+        </div>
+        <figure class="slide">
+          <img src="img/full_size/bear.jpg">
+        </figure>
 
-            <figure class="slide">
-                <img src="img/cropped/puma.jpg">
-            </figure>
+        <figure class="slide">
+          <img src="img/full_size/killerwhale.jpg">
+        </figure>
 
-            <figure class="slide">
-                <img src="img/full_size/wolf.jpg">
-            </figure>
-        </section>
+        <figure class="slide">
+          <img src="img/cropped/puma.jpg">
+        </figure>
 
-    </div>
+        <figure class="slide">
+          <img src="img/full_size/wolf.jpg">
+        </figure>
+      </div>
+    </section>
 
     <!-- Load Scripts -->
     <script src="js/zwiper.js"></script>
     <script>
-        // equal to $('document').ready(function(){ zwiper(); });
-        document.addEventListener('DOMContentLoaded', function() {
-            var _beastsOptions = {
-                container: 'animals',
-                slide: 'slide',
-                width: '600px',
-                height: '300px',
-                transitionDuration: '.7s',
-                transitionTiming: 'zwiper-ease-out',
-                autoHeight: true
-            }
+      // equal to $('document').ready(function(){ zwiper(); });
+      document.addEventListener('DOMContentLoaded', function () {
+        var _beastsOptions = {
+          container: 'animals',
+          slide: 'slide',
+          width: '600px',
+          height: '300px',
+          transitionDuration: '.7s',
+          transitionTiming: 'zwiper-ease-out',
+          autoHeight: true,
+          bulletNav: true
+        }
 
-            var beasts = new zwiper(_beastsOptions);
-        });
+        var beasts = new zwiper(_beastsOptions);
+      });
     </script>
-</body>
+  </body>
 
 </html>
